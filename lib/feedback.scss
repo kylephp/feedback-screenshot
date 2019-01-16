@@ -1,0 +1,38 @@
+#feedback-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  max-height: 100%;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+
+  canvas.draw-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    &.active {
+      cursor: crosshair;
+    }
+  }
+
+  .helpers {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .highlight:hover {
+      div {
+        background-color: rgba(0, 68, 255, .1);
+      }
+    }
+  }
+}
