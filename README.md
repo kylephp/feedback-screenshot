@@ -1,12 +1,12 @@
-# feedback
-Feedback tool similar to Google's.
+# feedback-screenshot
+Feedback tool for only screenshot similar to Google's.
 
 This is a very early alpha version, with a couple of [known issues](#known-issues), a complete rewrite. Should be more performant and less buggy (hopefully).
 
 ### Installing
 
 ```
-npm i @ivoviz/feedback.js
+git clone https://github.com/gogogoghost/feedback-sceenshot
 ```
 
 ### Usage
