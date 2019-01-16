@@ -36,6 +36,11 @@ interface Helper extends Area {
   index: number;
 }
 
+interface Options {
+  zIndex:number,
+  parent:HTMLElement
+}
+
 export class Feedback {
 
   private _initState: State = {
@@ -68,6 +73,7 @@ export class Feedback {
   private _helperElements: HTMLDivElement[] = [];
   private _helpers: Helper[] = [];
   private _helperIdx = 0;
+  private _options:Options
 
   private _drawOptionsPos: Position = {
     startX: 0,
@@ -82,13 +88,19 @@ export class Feedback {
     }
   };
 
+  constructor(options:Options){
+    this._options={
+      zIndex:options.zIndex||999,
+      parent:options.parent||document.body
+    };
+  }
+
   open() {
     if (!this._state.isOpen) {
       this._state.isOpen = true;
       this._root = this._createModal();
-      document.body.appendChild(this._root);
-
-      document.addEventListener('keydown', this._closeListener);
+      this._options.parent.appendChild(this._root);
+      //document.addEventListener('keydown', this._closeListener);
       this._openDrawer();
     }
   }
@@ -98,26 +110,23 @@ export class Feedback {
     this._state.highlight=!enable;
   }
 
-  close = () => {
+  close = (cancel) => {
     document.removeEventListener('mousemove', this._dragDrag);
     document.removeEventListener('mouseup', this._dragStop);
     document.removeEventListener('mouseup', this._drawStop);
     document.removeEventListener('mousemove', this._drawDraw);
-    document.removeEventListener('keydown', this._closeListener);
-    //document.removeEventListener('mousemove', this._highlightElement);
     document.removeEventListener('click', this._addHighlightedElement);
     window.removeEventListener('resize', this._resize);
-    // TODO: Should we remove the inner listeners on close?
-    // https://stackoverflow.com/a/37096563/1994803
-    document.body.removeChild(this._root);
+    this._options.parent.removeChild(this._root)
     this._reset();
+    if(cancel)
+      return null;
     return new Promise(resolve=>{
       html2canvas(document.body).then(canvas=>{
         let ctx=canvas.getContext('2d');
         ctx.drawImage(this._canvas,0,0);
         resolve(canvas);
       });
-
     })
     //return this._canvas;
   }
@@ -131,7 +140,12 @@ export class Feedback {
 
   private _createModal(): HTMLDivElement {
     const root = document.createElement('div');
-    root.id = 'feedback-js';
+    root.style.zIndex=this._options.zIndex+'';
+    root.style.position='fixed';
+    root.style.left='0';
+    root.style.top='0';
+    root.style.width='100%';
+    root.style.height='100%';
 
     //root.appendChild(this._createForm());
     root.appendChild(this._createHelpersContainer());
@@ -140,11 +154,11 @@ export class Feedback {
     return root;
   }
 
-  private _closeListener = ($event: KeyboardEvent) => {
+  /*private _closeListener = ($event: KeyboardEvent) => {
     if ($event.key === 'Escape') {
       this.close();
     }
-  }
+  }*/
 
   /*打开绘图器*/
   private _openDrawer = () => {
@@ -194,9 +208,10 @@ export class Feedback {
     const helpersContainer = document.createElement('div');
     helpersContainer.className = 'helpers';
     helpersContainer.style.width = `${document.documentElement.scrollWidth}px`;
-    helpersContainer.style.height = `${document.documentElement.scrollHeight}px`;
+    //helpersContainer.style.height = `${document.documentElement.scrollHeight}px`;
+    helpersContainer.style.height='0';
     helpersContainer.style.position='absolute';
-    helpersContainer.style.zIndex='-1';
+    //helpersContainer.style.zIndex='-1';
     this._helpersContainer = helpersContainer;
     return helpersContainer;
   }
