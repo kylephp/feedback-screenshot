@@ -1,4 +1,5 @@
-import * as html2canvas from 'html2canvas';
+declare const require:any;
+const html2canvas =require('html2canvas');
 
 interface State {
   isOpen: boolean;
@@ -11,18 +12,18 @@ interface State {
   sending: boolean;
 }
 
-interface Position {
-  startX: number;
-  startY: number;
-  currTransform: string;
-  nextTransform: string;
-  limits: {
-    xNeg: number;
-    xPos: number;
-    yNeg: number;
-    yPos: number;
-  };
-}
+// interface Position {
+//   startX: number;
+//   startY: number;
+//   currTransform: string;
+//   nextTransform: string;
+//   limits: {
+//     xNeg: number;
+//     xPos: number;
+//     yNeg: number;
+//     yPos: number;
+//   };
+// }
 
 interface Area {
   startX: number;
@@ -40,8 +41,8 @@ interface Options {
   zIndex:number,
   parent:HTMLElement
 }
-
-export class Feedback {
+declare const module:any;
+module.exports=class Feedback {
 
   private _initState: State = {
     isOpen: false,
@@ -75,7 +76,7 @@ export class Feedback {
   private _helperIdx = 0;
   private _options:Options
 
-  private _drawOptionsPos: Position = {
+  private _drawOptionsPos = {
     startX: 0,
     startY: 0,
     currTransform: null,
@@ -122,9 +123,9 @@ export class Feedback {
     if(cancel)
       return null;
     return new Promise(resolve=>{
-      html2canvas(document.body).then(canvas=>{
+      html2canvas(document.body,{useCORS:true,logging:false}).then(canvas=>{
         let ctx=canvas.getContext('2d');
-        ctx.drawImage(this._canvas,0,0);
+        ctx.drawImage(this._canvas,0,0,canvas.width,canvas.height);
         resolve(canvas);
       });
     })
@@ -164,15 +165,12 @@ export class Feedback {
   private _openDrawer = () => {
     //设置标识符
     this._state.canDraw = true;
-    //激活canvas
-    this._canvas.classList.add('active');
     document.addEventListener('click', this._addHighlightedElement);
   }
 
   /*关闭绘图器*/
   private _closeDrawer = () => {
     this._state.canDraw = false;
-    this._canvas.classList.remove('active');
     this._root.removeChild(this._drawOptions);
     this._formContainer.style.display = 'block';
     document.removeEventListener('click', this._addHighlightedElement);

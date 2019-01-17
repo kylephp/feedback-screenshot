@@ -1,9 +1,8 @@
 {
   "name": "feedback-screenshot",
-  "version": "1.0.5",
+  "version": "1.0.12",
   "description": "Feedback tool for only screenshot similar to Google's.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/feedback.js",
   "scripts": {
   },
   "repository": {
