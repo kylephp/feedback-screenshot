@@ -1,6 +1,6 @@
 # feedback-screenshot
 
-![](https://img.shields.io/npm/v/feedback-screenshot.svg?style=flat-square)
+[![](https://img.shields.io/npm/v/feedback-screenshot.svg?style=flat-square)](https://www.npmjs.com/package/feedback-screenshot)
 
 Feedback tool for only screen shot similar to Google's.
 
