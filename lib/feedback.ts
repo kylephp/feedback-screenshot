@@ -38,8 +38,10 @@ interface Helper extends Area {
 }
 
 interface Options {
+  borderColor:string,
   zIndex:number,
-  parent:HTMLElement
+  parent:HTMLElement,
+  html2canvas:Object
 }
 declare const module:any;
 module.exports=class Feedback {
@@ -91,8 +93,10 @@ module.exports=class Feedback {
 
   constructor(options:Options){
     this._options={
+      borderColor:options.borderColor||'#347EF8',
       zIndex:options.zIndex||999,
-      parent:options.parent||document.body
+      parent:options.parent||document.body,
+      html2canvas:options.html2canvas||{}
     };
   }
 
@@ -111,7 +115,7 @@ module.exports=class Feedback {
     this._state.highlight=!enable;
   }
 
-  close = (cancel) => {
+  close = (isCancel) => {
     document.removeEventListener('mousemove', this._dragDrag);
     document.removeEventListener('mouseup', this._dragStop);
     document.removeEventListener('mouseup', this._drawStop);
@@ -120,10 +124,10 @@ module.exports=class Feedback {
     window.removeEventListener('resize', this._resize);
     this._options.parent.removeChild(this._root)
     this._reset();
-    if(cancel)
+    if(isCancel)
       return null;
     return new Promise(resolve=>{
-      html2canvas(document.body,{useCORS:true,logging:false}).then(canvas=>{
+      html2canvas(document.body,this._options.html2canvas).then(canvas=>{
         let ctx=canvas.getContext('2d');
         ctx.drawImage(this._canvas,0,0,canvas.width,canvas.height);
         resolve(canvas);
@@ -376,7 +380,7 @@ module.exports=class Feedback {
   }
 
   private _drawLines(x: number, y: number, width: number, height: number) {
-    this._ctx.strokeStyle = '#347EF8';
+    this._ctx.strokeStyle = this._options.borderColor;
     this._ctx.lineJoin = 'bevel';
     this._ctx.lineWidth = 4;
 
