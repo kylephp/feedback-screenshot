@@ -6,6 +6,8 @@ Feedback tool for only screen shot similar to Google's.
 
 This is a component extracted from [@ivoviz/feedback.js](https://github.com/ivoviz/feedback)
 
+![](https://raw.githubusercontent.com/gogogoghost/feedback-screenshot/dev/readme/demo.gif)
+
 ### Installing
 
 ```
