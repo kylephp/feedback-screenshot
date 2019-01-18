@@ -7,23 +7,26 @@ This is a component extracted from [feedback](https://github.com/ivoviz/feedback
 ### Installing
 
 ```
-npm install feedback-sceenshot
+npm install feedback-screenshot
 ```
 
 ### Usage
 
 ```js
-import Feedback from 'feedback-sceenshot';
+import Feedback from 'feedback-screenshot';
 
 const feedback = new Feedback({
   //default:#347EF8(blue)
   borderColor:'#000',
+  
   //zIndex of screen shot div
   //default:999
   zIndex:200,
+  
   //div will append to
   //default:document.body
   parent:document.querySelector('#content'),
+  
   //html2canvas options
   //default:{}
   html2canvas:{
