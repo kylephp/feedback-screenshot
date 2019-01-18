@@ -5,7 +5,8 @@
     "moduleResolution": "node",
     "outDir": "./dist",
     "sourceMap":false,
-    "declaration": false
+    "declaration": false,
+    "removeComments": true
   },
   "lib": [
     "es6",

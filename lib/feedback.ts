@@ -129,6 +129,14 @@ module.exports=class Feedback {
     return new Promise(resolve=>{
       html2canvas(document.body,this._options.html2canvas).then(canvas=>{
         let ctx=canvas.getContext('2d');
+        // this._canvas.style.position='fixed';
+        // this._canvas.style.left='0';
+        // this._canvas.style.top='0';
+        // this._canvas.style.width='300px';
+        // this._canvas.style.height='150px';
+        // this._canvas.style.zIndex='9999999999';
+        // document.body.appendChild(this._canvas)
+        ctx.globalAlpha=1;
         ctx.drawImage(this._canvas,0,0,canvas.width,canvas.height);
         resolve(canvas);
       });

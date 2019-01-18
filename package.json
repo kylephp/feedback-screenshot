@@ -1,6 +1,6 @@
 {
   "name": "feedback-screenshot",
-  "version": "1.0.15",
+  "version": "1.0.17",
   "description": "Feedback tool for only screenshot similar to Google's.",
   "main": "dist/feedback.js",
   "scripts": {

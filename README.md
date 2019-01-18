@@ -21,18 +21,19 @@ const feedback = new Feedback({
   //default:#347EF8(blue)
   borderColor:'#000',
   
-  //zIndex of screen shot div
+  //zIndex of screen shot content
   //default:999
   zIndex:200,
   
-  //div will append to
+  //content will append to
   //default:document.body
   parent:document.querySelector('#content'),
   
   //html2canvas options
   //default:{}
   html2canvas:{
-    logging:false
+    logging:false,
+    useCROS:true
   }
 })
 
