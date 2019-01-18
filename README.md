@@ -2,6 +2,8 @@
 
 Feedback tool for only screen shot similar to Google's.
 
+This is a component extracted from [feedback](https://github.com/ivoviz/feedback)
+
 ### Installing
 
 ```
