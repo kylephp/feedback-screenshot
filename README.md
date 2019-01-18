@@ -1,8 +1,10 @@
 # feedback-screenshot
 
+!()[https://img.shields.io/npm/v/feedback-screenshot.svg?style=flat-square]
+
 Feedback tool for only screen shot similar to Google's.
 
-This is a component extracted from [feedback](https://github.com/ivoviz/feedback)
+This is a component extracted from [@ivoviz/feedback.js](https://github.com/ivoviz/feedback)
 
 ### Installing
 
