@@ -1,4 +1,4 @@
-const html2canvas = require('html2canvas');
+const html2canvas = require('@kylephp/html2canvas');
 module.exports = class Feedback {
     constructor(options) {
         this._initState = {
