@@ -3,22 +3,21 @@
   "version": "1.0.18",
   "description": "Feedback tool for only screenshot similar to Google's.",
   "main": "dist/feedback.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+github.com:gogogoghost/feedback-sceenshot.git"
+    "url": "git+github.com:kylephp/feedback-sceenshot.git"
   },
   "keywords": [
     "feedback"
   ],
-  "author": "gogogoghost",
+  "author": "Kyle Hoang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gogogoghost/feedback-screenshot/issues"
+    "url": "https://github.com/kylephp/feedback-screenshot/issues"
   },
-  "homepage": "https://github.com/gogogoghost/feedback-screenshot#readme",
+  "homepage": "https://github.com/kylephp/feedback-screenshot#readme",
   "dependencies": {
-    "html2canvas": "^1.0.0-alpha.12"
+    "html2canvas": "git@github.com:kylephp/html2canvas.git"
   }
 }
