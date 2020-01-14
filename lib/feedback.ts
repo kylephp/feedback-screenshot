@@ -1,5 +1,5 @@
 declare const require:any;
-const html2canvas =require('html2canvas');
+const html2canvas =require('@kylephp/html2canvas');
 
 interface State {
   isOpen: boolean;
