@@ -1,6 +1,6 @@
 {
   "name": "@kylephp/feedback-screenshot",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Feedback tool for only screenshot similar to Google's.",
   "main": "dist/feedback.js",
   "scripts": {},
