@@ -9,9 +9,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import { Promise } from 'es6-promise';
 var html2canvas = require('@kylephp/html2canvas');
-var findIndex = require('@types/array-find-index');
 module.exports = (function () {
     function Feedback(options) {
         var _this = this;
@@ -323,8 +321,8 @@ module.exports = (function () {
         removeButton.style.top = '-15px';
         removeButton.addEventListener('click', function ($event) {
             removeButton.parentNode.parentNode.removeChild(h);
-            _this._helpers.splice(findIndex(_this._helpers, function (_helper) { return _helper.index === helper.index; }), 1);
-            _this._helperElements.splice(findIndex(_this._helperElements, function (_helper) { return +_helper.getAttribute('idx') === helper.index; }), 1);
+            _this._helpers.splice(_this._helpers.findIndex(function (_helper) { return _helper.index === helper.index; }), 1);
+            _this._helperElements.splice(_this._helperElements.findIndex(function (_helper) { return +_helper.getAttribute('idx') === helper.index; }), 1);
             _this._redraw();
         });
         h.addEventListener('mouseenter', function ($event) {

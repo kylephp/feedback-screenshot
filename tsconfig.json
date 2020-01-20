@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "newLine": "LF",
     "target": "es5",
     "moduleResolution": "node",
+    "module": "esnext",
     "outDir": "./dist",
-    "sourceMap":false,
-    "declaration": false,
+    "lib": ["dom", "es5", "es6", "es7", "esnext"],
+    "importHelpers": true,
     "removeComments": true
   },
   "lib": [
-    "es6",
-    "dom"
+    "dom", "es5", "es6", "es7", "esnext"
   ],
   "exclude": [
     "node_modules"
