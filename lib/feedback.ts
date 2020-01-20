@@ -1,5 +1,7 @@
+import {Promise} from 'es6-promise'
 declare const require:any;
-const html2canvas =require('@kylephp/html2canvas');
+const html2canvas = require('@kylephp/html2canvas');
+const findIndex = require('@types/array-find-index');
 
 interface State {
   isOpen: boolean;
@@ -422,8 +424,8 @@ module.exports=class Feedback {
     removeButton.style.top = '-15px';
     removeButton.addEventListener('click', ($event) => {
       removeButton.parentNode.parentNode.removeChild(h);
-      this._helpers.splice(this._helpers.findIndex(_helper => _helper.index === helper.index), 1);
-      this._helperElements.splice(this._helperElements.findIndex(_helper => +_helper.getAttribute('idx') === helper.index), 1);
+      this._helpers.splice(findIndex(this._helpers, _helper => _helper.index === helper.index), 1);
+      this._helperElements.splice(findIndex(this._helperElements, _helper => +_helper.getAttribute('idx') === helper.index), 1);
       this._redraw();
     });
 

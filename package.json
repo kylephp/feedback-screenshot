@@ -1,6 +1,6 @@
 {
   "name": "@kylephp/feedback-screenshot",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "Feedback tool for only screenshot similar to Google's.",
   "main": "dist/feedback.js",
   "scripts": {},
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/kylephp/feedback-screenshot#readme",
   "dependencies": {
-    "@kylephp/html2canvas": "^1.0.0"
+    "@kylephp/html2canvas": "^1.0.0",
+    "@types/array-find-index": "^1.0.0",
+    "@types/es6-promise": "^3.3.0"
   }
 }
